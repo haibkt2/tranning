@@ -1,0 +1,27 @@
+
+ 
+#include <stdio.h>
+ 
+#define MAXCHAR 1000
+int main() {
+    FILE *fpr;
+    FILE *fpw;
+    char str[MAXCHAR];
+    char* file_read = "DL.INP.txt";
+    char* file_write = "DL.OUT.txt";
+ 
+    fpr = fopen(file_read, "r");
+    fpw = fopen (file_write,"w");
+    if (fpr == NULL){
+        return 1;
+    }
+    while (fgets(str, MAXCHAR, fpr) != NULL) {
+        int num = atoi(str);
+        if(num%2 == 0)
+            fprintf (fpw, str);
+    }
+        
+    fclose(fpr);
+    fclose(fpw);
+    return 0;
+}
